@@ -2,7 +2,7 @@
 
 # Script Name:                          port_scanner.py 
 # Author name:                          Festus Oguhebe Jr. / Credit: Hector Cordova
-# Date of latest revision:              11MAR2024
+# Date of latest revision:              12MAR2024
 # Purpose:                              to determine if a target port is open or closed,
 # Execution:                            python3 
 # Additional Resources:                 https://github.com/codefellows/seattle-cybersecurity-401d10/blob/main/class-44/challenges/DEMO.md, https://docs.python.org/3/library/socket.html, https://chat.openai.com/share/195abccf-2fa3-4476-ac87-66f03fcebaac
